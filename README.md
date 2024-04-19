@@ -376,4 +376,107 @@ export class AppComponent implements OnDestroy {
 }
 ```
 
-These examples provide a look into more complex aspects of Angular, showing how it facilitates powerful, maintainable, and scalable application development. Each of these features brings unique benefits to Angular projects, enhancing both performance and productivity.
+## 5. Angular Directives
+
+**Directives** are classes that add additional behavior to elements in your Angular applications
+
+Apart from built-in directives like **ngIf** and **ngFor**, you can create **custom directives**\
+
+Here’s an example of a custom attribute directive that changes the background color of an element:
+
+```typescript
+// highlight.directive.ts
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective implements OnInit {
+  @Input() appHighlight: string;
+
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    this.el.nativeElement.style.backgroundColor = this.appHighlight || 'yellow';
+  }
+}
+```
+
+Usage in a component template:
+
+```html
+<!-- app.component.html -->
+<p [appHighlight]="'lightgreen'">Highlighted text!</p>
+```
+
+## 6. Angular Modules
+
+Modules in Angular help organize an application into cohesive blocks of functionality
+
+Here’s an example of a feature module:
+
+```typescript
+// books.module.ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BooksListComponent } from './books-list/books-list.component';
+
+@NgModule({
+  declarations: [BooksListComponent],
+  imports: [CommonModule],
+  exports: [BooksListComponent]
+})
+export class BooksModule {}
+```
+
+## 7. Lazy Loading
+
+Lazy loading is a technique in Angular to load modules only when they are needed
+
+This can significantly improve the startup time of your application
+
+Here's how to configure lazy loading in Angular's routing:
+
+```typescript
+// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'books',
+    loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+## 8. Change Detection Strategies
+
+Angular provides two change detection strategies: **Default** and **OnPush**
+
+**OnPush** can improve performance by reducing the checks Angular performs. 
+
+Here’s how to use OnPush:
+
+```typescript
+// user.component.ts
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { User } from './user.model';  // Assume a model interface is defined
+
+@Component({
+  selector: 'app-user',
+  template: `<p>{{ user.name }}</p>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class UserComponent {
+  @Input() user: User;
+}
+```
+
+This component will now only check for and react to changes when its input properties change, rather than checking during every change detection cycle.
