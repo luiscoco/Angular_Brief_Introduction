@@ -762,3 +762,169 @@ export class PanelComponent {}
   <div panel-body>Content of the panel goes here.</div>
 </app-panel>
 ```
+
+## 13. Using Observables and Promises in Angular
+
+Angular integrates **RxJS Observables** extensively for handling asynchronous operations
+
+Here’s an example of using Observables in a service to handle HTTP requests, and an example of **converting an Observable to a Promise** in a component
+
+**Service using Observable**:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  constructor(private http: HttpClient) {}
+
+  fetchData(): Observable<any> {
+    return this.http.get('https://api.example.com/data')
+      .pipe(
+        map(response => response.data)
+      );
+  }
+}
+```
+
+**Component using Promises**:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-example',
+  template: `<div>{{ data | json }}</div>`
+})
+export class ExampleComponent implements OnInit {
+  data: any;
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.dataService.fetchData().toPromise().then(data => {
+      this.data = data;
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }
+}
+```
+
+## 14. Custom Pipes for Data Transformation
+
+Angular pipes are used for transforming output in templates
+
+You can create custom pipes to perform specific transformations
+
+**Creating a Custom Pipe**:
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'capitalize'
+})
+export class CapitalizePipe implements PipeTransform {
+  transform(value: string): string {
+    if (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+    return value;
+  }
+}
+```
+
+**Using the Pipe in a Template**:
+
+```html
+<!-- In some component template -->
+<p>{{ 'hello' | capitalize }}</p>
+```
+
+## 15. Route Guards
+
+Route guards are used in Angular to decide if a user can navigate to or leave a certain route
+
+Here’s an example of using a route guard for authentication
+
+**Creating a Route Guard**:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+    if (localStorage.getItem('currentUser')) {
+      return true;
+    } else {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+      return false;
+    }
+  }
+}
+```
+
+**Using the Guard in Routing**:
+
+```typescript
+import { Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home.component';
+import { LoginComponent } from './login.component';
+
+const routes: Routes = [
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
+];
+```
+
+## 16. Decorators
+
+Decorators are a design pattern that is used to separate modification or decoration of a class without modifying the original source code
+
+**Creating a Custom Decorator**:
+
+```typescript
+function Log(target: any, propertyName: string | Symbol) {
+  let value = target[propertyName];
+
+  const getter = () => {
+    console.log(`Get: ${propertyName} => ${value}`);
+    return value;
+  };
+
+  const setter = (newValue: any) => {
+    console.log(`Set: ${propertyName} => ${newValue}`);
+    value = newValue;
+  };
+
+  Object.defineProperty(target, propertyName, {
+    get: getter,
+    set: setter
+  });
+}
+
+class MyClass {
+  @Log
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+```
