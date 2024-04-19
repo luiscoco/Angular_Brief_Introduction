@@ -479,4 +479,144 @@ export class UserComponent {
 }
 ```
 
-This component will now only check for and react to changes when its input properties change, rather than checking during every change detection cycle.
+This component will now only check for and react to changes when its input properties change, rather than checking during every change detection cycle
+
+Let's explore additional advanced Angular features such as Interceptors, State Management with NgRx, Dynamic Components, and Content Projection. These features enable sophisticated handling of various application needs such as state control, dynamic behavior, and efficient data handling.
+
+## 9.  HTTP Interceptors
+
+Interceptors provide a way to intercept and modify HTTP requests and responses in your Angular applications
+
+They can be used for logging, caching, or adding custom headers
+
+Here’s how you might create an interceptor for adding an authentication token to outgoing requests:
+
+```typescript
+// auth.interceptor.ts
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const authToken = this.getAuthToken();
+    const authReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${authToken}`)
+    });
+    return next.handle(authReq);
+  }
+
+  private getAuthToken(): string {
+    // Retrieve the user's token from storage
+    return 'your_token_here';
+  }
+}
+```
+
+**Register the interceptor in your module**:
+
+```typescript
+// app.module.ts
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+
+@NgModule({
+  // Other module properties
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
+})
+export class AppModule {}
+```
+
+## 10. State Management with NgRx
+
+**NgRx** is a framework for building reactive applications in Angular using the Redux pattern
+
+Here is a simple example of setting up NgRx for managing the state of user data:
+
+```typescript
+// actions/user.actions.ts
+import { createAction, props } from '@ngrx/store';
+import { User } from '../models/user.model';
+
+export const addUser = createAction(
+  '[User List] Add User',
+  props<{ user: User }>()
+);
+```
+
+```typescript
+// reducers/user.reducer.ts
+import { createReducer, on } from '@ngrx/store';
+import { addUser } from '../actions/user.actions';
+import { User } from '../models/user.model';
+
+export const initialState: ReadonlyArray<User> = [];
+
+export const userReducer = createReducer(
+  initialState,
+  on(addUser, (state, { user }) => [...state, user])
+);
+```
+
+## 11. Dynamic Component Loading
+
+Angular can dynamically load components based on conditions or at runtime
+
+This can be useful for large applications where you want to load components as needed without increasing the initial load time:
+
+```typescript
+// dynamic.component.ts
+import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+
+@Component({
+  selector: 'app-dynamic',
+  template: `<ng-template #container></ng-template>`
+})
+export class DynamicComponent implements OnInit {
+  @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
+  @Input() childComponent: any;
+
+  constructor(private resolver: ComponentFactoryResolver) {}
+
+  ngOnInit() {
+    const factory = this.resolver.resolveComponentFactory(this.childComponent);
+    this.container.createComponent(factory);
+  }
+}
+```
+
+## 12. Content Projection
+
+Content projection (transclusion in AngularJS terms) allows you to inject HTML content from the parent component into the child component
+
+Here’s an example using the <ng-content> directive:
+
+```typescript
+// panel.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-panel',
+  template: `
+    <div class="panel">
+      <ng-content select="[panel-title]"></ng-content>
+      <ng-content select="[panel-body]"></ng-content>
+    </div>
+  `
+})
+export class PanelComponent {}
+```
+
+// Usage in parent component
+
+```html
+<!-- parent.component.html -->
+<app-panel>
+  <h2 panel-title>Title of Panel</h2>
+  <div panel-body>Content of the panel goes here.</div>
+</app-panel>
+```
