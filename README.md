@@ -199,7 +199,7 @@ export class AboutComponent {}
 
 ## 4. Data Binding
 
-Angular supports different types of data binding, such as property binding, event binding, and two-way binding. Here’s an example:
+Angular supports different types of data binding, such as **property binding**, **event binding**, and **two-way binding**:
 
 ```html
 <!-- app.component.html -->
@@ -225,6 +225,148 @@ export class AppComponent {
   }
 }
 ```
+
+In Angular, components can communicate using a variety of methods depending on the relationship between the components (parent to child, child to parent, or unrelated components). Below are examples for each scenario, illustrating effective communication patterns using @Input(), @Output(), services, and Angular’s event-driven architecture.
+
+## 5. Parent to Child Communication
+
+Parent components can pass data to child components using @Input() decorators
+
+**Child Component (Receives data)**:
+
+```typescript
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<p>Received message: {{ message }}</p>`
+})
+export class ChildComponent {
+  @Input() message: string;
+}
+```
+
+**Parent Component (Sends data)**:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `<app-child [message]="parentMessage"></app-child>`
+})
+export class ParentComponent {
+  parentMessage = 'Hello from Parent!';
+}
+```
+
+## 6. Child to Parent Communication
+
+Child components can send data back to the parent using the @Output() decorator and EventEmitter. Here’s how:
+
+**Child Component (Sends data)**:
+
+```typescript
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<button (click)="sendMessage()">Send Message to Parent</button>`
+})
+export class ChildComponent {
+  @Output() messageEvent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageEvent.emit('Hello from Child!');
+  }
+}
+```
+
+**Parent Component (Receives data)**:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `<app-child (messageEvent)="receiveMessage($event)"></app-child>
+             <p>Message received: {{ message }}</p>`
+})
+export class ParentComponent {
+  message: string;
+
+  receiveMessage(message: string) {
+    this.message = message;
+  }
+}
+```
+
+## 7. Communication Between Unrelated Components
+
+For components that are not in a direct parent-child relationship, you can use a shared service with observables to facilitate communication:
+
+**Shared Service**:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MessageService {
+  private messageSource = new BehaviorSubject<string>('default message');
+  currentMessage = this.messageSource.asObservable();
+
+  changeMessage(message: string) {
+    this.messageSource.next(message);
+  }
+}
+```
+
+**Component A (Sends data)**:
+
+```typescript
+import { Component } from '@angular/core';
+import { MessageService } from './message.service';
+
+@Component({
+  selector: 'app-component-a',
+  template: `<button (click)="newMessage()">Send New Message</button>`
+})
+export class ComponentA {
+  constructor(private messageService: MessageService) {}
+
+  newMessage() {
+    this.messageService.changeMessage('Hello from Component A!');
+  }
+}
+```
+
+**Component B (Receives data)**:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from './message.service';
+
+@Component({
+  selector: 'app-component-b',
+  template: `<p>{{ message }}</p>`
+})
+export class ComponentB implements OnInit {
+  message: string;
+
+  constructor(private messageService: MessageService) {}
+
+  ngOnInit() {
+    this.messageService.currentMessage.subscribe(message => this.message = message);
+  }
+}
+```
+
+These examples cover the primary methods by which components can communicate in Angular\
+
+By utilizing **@Input()**, **@Output()**, and **services with observables**, Angular provides flexible solutions for component interactions across a variety of scenarios, supporting clean and manageable data flow within applications.
 
 # More advance Angular features
 
