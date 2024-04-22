@@ -114,6 +114,24 @@ And the corresponding HTML template:
 <h1>Welcome to {{ title }}!</h1>
 ```
 
+Type the following command to generate a new component
+
+Replace your-component-name with the desired name for your component:
+
+```
+ng generate component your-component-name
+```
+
+Or, you can use the shorter alias ng g c:
+
+```
+ng g c your-component-name
+```
+
+This command will create a new directory under the **src/app** folder with the component files, including TypeScript, HTML, CSS, and a spec file for testing
+
+Make sure you have Angular CLI installed globally (**npm install -g @angular/cli**) and that your terminal is opened in the root directory of your Angular project where the angular.json file is located
+
 ## 2. Angular Services
 
 Services in Angular are reusable data providers that can be injected into components. Here's an example of a simple logging service:
