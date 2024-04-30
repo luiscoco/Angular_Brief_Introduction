@@ -1150,7 +1150,7 @@ Transforms a date value according to locale rules and parameters you provide for
 <!-- Output might look like: "Sunday, June 28, 2020" -->
 ```
 
-2. UpperCasePipe and LowerCasePipe
+#### 14.1.2. UpperCasePipe and LowerCasePipe
 
 Transforms text to all upper or lower case.
 
@@ -1159,7 +1159,7 @@ Transforms text to all upper or lower case.
 <p>{{ 'Hello World' | lowercase }}</p> <!-- hello world -->
 ```
 
-3. CurrencyPipe
+#### 14.1.3. CurrencyPipe
 
 Transforms a number to a currency string, formatted according to locale rules.
 
@@ -1168,7 +1168,7 @@ Transforms a number to a currency string, formatted according to locale rules.
 <!-- Output might look like: "$1,234.50" -->
 ```
 
-4. DecimalPipe
+#### 14.1.4. DecimalPipe
 
 Transforms a number into a decimal number string, formatted according to locale rules.
 
@@ -1177,7 +1177,7 @@ Transforms a number into a decimal number string, formatted according to locale 
 <!-- Output: "1.35" -->
 ```
 
-5. PercentPipe
+#### 14.1.5. PercentPipe
 
 Transforms a number to a percent string, formatted according to locale rules.
 
@@ -1186,7 +1186,7 @@ Transforms a number to a percent string, formatted according to locale rules.
 <!-- Output: "15.40%" -->
 ```
 
-6. SlicePipe
+#### 14.1.6. SlicePipe
 
 Creates a new Array or String containing a subset (slice) of the elements
 
@@ -1195,7 +1195,7 @@ Creates a new Array or String containing a subset (slice) of the elements
 <p>{{ [1, 2, 3, 4, 5] | slice:1:3 }}</p> <!-- [2,3] -->
 ```
 
-7. JsonPipe
+#### 14.1.7. JsonPipe
 
 Converts a value into its JSON-format string. Useful for debugging.
 
@@ -1204,7 +1204,7 @@ Converts a value into its JSON-format string. Useful for debugging.
 <!-- Output: '{"name": "John"}' -->
 ```
 
-8. AsyncPipe
+#### 14.1.8. AsyncPipe
 
 Automatically subscribes to an Observable or Promise and returns the latest value it has emitted.
 
@@ -1212,7 +1212,7 @@ Automatically subscribes to an Observable or Promise and returns the latest valu
 <p>{{ userObservable | async }}</p>
 ```
 
-9. KeyValuePipe
+#### 14.1.9. KeyValuePipe
 
 Converts an object or Map into an array of key-value pairs so you can iterate over it with *ngFor.
 
@@ -1222,7 +1222,7 @@ Converts an object or Map into an array of key-value pairs so you can iterate ov
 </div>
 ```
 
-10. TitleCasePipe
+#### 14.1.10. TitleCasePipe
 
 Transforms the first letter of each word to uppercase; other letters remain unchanged.
 
@@ -1230,11 +1230,11 @@ Transforms the first letter of each word to uppercase; other letters remain unch
 <p>{{ 'hello world' | titlecase }}</p> <!-- "Hello World" -->
 ```
 
-These pipes are powerful tools for formatting and displaying data in your Angular applications, allowing you to keep your component code clean and focused on business logic, while the template handles the display logic. Each pipe is designed to be used in template expressions, making them both convenient and efficient for transforming data directly in the UI layer
+These pipes are powerful tools for formatting and displaying data in your Angular applications, allowing you to keep your component code clean and focused on business logic, while the template handles the display logic
 
+Each pipe is designed to be used in template expressions, making them both convenient and efficient for transforming data directly in the UI layer
 
-
-### 14.2.  Custom Pipes for Data Transformatio
+### 14.2.  Custom Pipes for Data Transformation
 
 Angular pipes are used for transforming output in templates
 
