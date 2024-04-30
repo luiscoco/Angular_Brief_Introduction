@@ -1345,3 +1345,109 @@ class MyClass {
   }
 }
 ```
+
+## 17. Manage DOM and component interactions in your Angular applications
+
+### 17.1. @ViewChild
+
+The **@ViewChild** decorator is used to access a single child component, directive, or DOM element from the template
+
+It’s useful when you need to interact with one specific element, for instance, to read its properties, call methods on it, or manipulate it directly
+
+**@ViewChild** can be configured to access the first occurrence of the element or component if there are multiple
+
+Example:
+
+Suppose you have a child component that needs to be accessed in your parent component:
+
+```typescript
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { ChildComponent } from './child.component';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child></app-child>
+  `
+})
+export class ParentComponent implements AfterViewInit {
+  @ViewChild(ChildComponent) childComponent!: ChildComponent;
+
+  ngAfterViewInit() {
+    console.log(this.childComponent.message); // Access properties or methods
+  }
+}
+```
+
+In this setup, **@ViewChild** allows the **Parent component to interact with the ChildComponent**
+
+### 17.2. @ViewChildren
+
+The **@ViewChildren** decorator in Angular is used to **access multiple elements or directives** from the view DOM
+
+It can be used to query DOM elements, components, or directives that are repeated in a template
+
+This is particularly useful when you want to perform operations on all instances of a component or all elements with a specific directive
+
+Here's a simple example to illustrate how @ViewChildren can be used:
+
+**Step 1: Define a Child Component**
+
+First, let's create a simple child component that we will query using @ViewChildren. This component will just display a simple message.
+
+```typescript
+// app/child.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<p>{{ message }}</p>`
+})
+export class ChildComponent {
+  message: string = 'Hello from Child Component';
+}
+```
+
+**Step 2: Use the Child Component in a Parent Component**
+
+Now, let's use this child component multiple times in a parent component's template
+
+ We will use **@ViewChildren** to get references to all instances of the child component
+
+```typescript
+// app/parent.component.ts
+import { Component, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { ChildComponent } from './child.component';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child></app-child>
+    <app-child></app-child>
+    <app-child></app-child>
+  `
+})
+export class ParentComponent implements AfterViewInit {
+  @ViewChildren(ChildComponent) children!: QueryList<ChildComponent>;
+
+  ngAfterViewInit() {
+    // ViewChildren are set after the view has been initialized
+    this.children.forEach((childInstance) => console.log(childInstance.message));
+  }
+}
+```
+
+In this example:
+
+The **@ViewChildren** decorator is used to query all instances of ChildComponent within the ParentComponent
+
+It retrieves a **QueryList of ChildComponent instances**
+
+ngAfterViewInit lifecycle hook is used because @ViewChildren resolves after Angular initializes the view, meaning you have access to the children only after the view is fully rendered.
+The example logs the message of each child component to the console, demonstrating that you have access to all the instances.
+This setup is particularly useful when you need to interact with multiple instances of components dynamically added to the template or when components are repeated using structural directives like *ngFor.
+
+
+### 17.3.
+
+### 17.4.
