@@ -34,33 +34,33 @@ More advance Angular features
 
 5. Angular Directives
 
-   5.1. ng-content
+5.1. ng-content
 
-   5.2. ng-template
+5.2. ng-template
 
-   5.3. ng-container
+5.3. ng-container
 
-  5.4. *ngIf
+5.4. *ngIf
   
-  5.5. *ngFor
+5.5. *ngFor
 
-  5.6. *ngSwitch, *ngSwitchCase, and *ngSwitchDefault
+5.6. *ngSwitch, *ngSwitchCase, and *ngSwitchDefault
 
-  5.7. *ngIf; else
+5.7. *ngIf; else
 
-  5.8. [(ngModel)]
+5.8. [(ngModel)]
 
-  5.9. [ngClass] and [ngStyle]
+5.9. [ngClass] and [ngStyle]
 
-  5.10. *ngTemplateOutlet
+5.10. *ngTemplateOutlet
 
-  5.11. *ngLet
+5.11. *ngLet
   
-  5.12. [ngValue]
+5.12. [ngValue]
  
-  5.13. [ngPlural]
+5.13. [ngPlural]
 
-  5.14. Custom Directive
+5.14. Custom Directive
 
 6. Angular Modules
 
@@ -80,9 +80,9 @@ More advance Angular features
 
 14. Pipes in Angular
 
-   14.1. Built-in Pipes in Angular: DatePipe, UpperCasePipe and LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, SlicePipe, JsonPipe, AsyncPipe, KeyValuePipe, TitleCasePipe
+14.1. Built-in Pipes in Angular: DatePipe, UpperCasePipe and LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, SlicePipe, JsonPipe, AsyncPipe, KeyValuePipe, TitleCasePipe
 
-   14.2. Custom Pipes for Data Transformation
+14.2. Custom Pipes for Data Transformation
 
 
 
