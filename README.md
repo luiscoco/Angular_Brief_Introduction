@@ -2,6 +2,8 @@
 
 **Summary**:
 
+0. Introduction
+
 1. Setting Up Angular in Visual Studio Code (VSCode)
 
 2. Sample Angular Project Structure
@@ -9,11 +11,11 @@
 3. Angular Components
 
 
-
 **More advance Angular features**
 
 1. HTTP Service (HttpClient)
 
+## 0. Introduction
 
 Angular is a popular framework developed by **Google** for building **dynamic web applications**
 
