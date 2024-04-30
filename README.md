@@ -567,6 +567,49 @@ Example:
 
 Here, the ```<p>`` tag in the ParentComponent's template will appear inside the ng-content tag in the ChildComponent.
 
+### 5.2. ng-template
+
+**ng-template** directive is a template element used in Angular to render HTML views dynamically
+
+The content inside ng-template is not rendered directly; instead, it can be used as a template or blueprint to be instantiated programmatically by Angular based on certain conditions or contexts
+
+Example:
+
+```html
+<ng-template #loadingTemplate>
+  <div>Loading...</div>
+</ng-template>
+
+<div *ngIf="isLoading; else loadingTemplate">
+  Content is loaded.
+</div>
+```
+
+In this example, if isLoading is true, "Content is loaded." will be displayed
+
+If isLoading is false, the content inside ng-template tagged with loadingTemplate will be displayed, which is "Loading..."
+
+### 5.3. ng-container
+
+**ng-container** directive is a grouping element that doesn't interfere with styles or layout because Angular doesn't put it into the DOM
+
+It's useful for conditional grouping of elements without adding extra elements to the DOM
+
+Example:
+
+```html
+<div>
+  <ng-container *ngIf="isVisible">
+    <p>This paragraph is only added to the DOM if 'isVisible' is true.</p>
+    <p>This is another paragraph that also depends on 'isVisible'.</p>
+  </ng-container>
+</div>
+```
+
+In this case, both paragraphs are only rendered if isVisible is true
+
+**ng-container** is especially useful when you want to use structural directives like **ngIf**, **ngFor**, or **ngSwitch** on multiple elements simultaneously without wrapping them in an actual DOM element like a div
+
 ### 5. Custom Directive
 
 **Directives** are classes that add additional behavior to elements in your Angular applications
