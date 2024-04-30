@@ -80,27 +80,7 @@ More advance Angular features
 
 14. Pipes in Angular
 
-   14.1. Built-in Pipes in Angular
-
-     14.1.1. DatePipe
-
-     14.1.2. UpperCasePipe and LowerCasePipe
-
-     14.1.3. CurrencyPipe
-
-     14.1.4. DecimalPipe
-
-     14.1.5. PercentPipe
-
-     14.1.6. SlicePipe
-
-     14.1.7. JsonPipe
-
-     14.1.8. AsyncPipe
-
-     14.1.9. KeyValuePipe
-
-     14.1.10. TitleCasePipe
+   14.1. Built-in Pipes in Angular: DatePipe, UpperCasePipe and LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, SlicePipe, JsonPipe, AsyncPipe, KeyValuePipe, TitleCasePipe
 
    14.2. Custom Pipes for Data Transformation
 
