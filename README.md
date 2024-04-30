@@ -26,6 +26,30 @@ More advance Angular features
 
 1. HTTP Service (HttpClient)
 
+2. Reactive Forms
+
+3. Dependency Injection (DI)
+
+4. RxJS Observables
+
+5. Angular Directives
+
+   5.1. ng-content
+
+   5.2. ng-template
+
+   5.3. ng-container
+
+   5.4. 
+
+   5.5.
+
+   5.6.
+
+   5.7.
+
+   5.8.
+
 ## 0. Introduction
 
 Angular is a popular framework developed by **Google** for building **dynamic web applications**
