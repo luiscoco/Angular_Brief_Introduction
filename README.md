@@ -652,7 +652,27 @@ Example:
 
 Depending on the value of user.role, a different paragraph will be displayed
 
-### 5.7. [(ngModel)]
+### 5.7. *ngIf; else
+
+This is a variation of *ngIf that allows you to specify an alternative template to show if the condition is false
+
+Example:
+
+```html
+<div *ngIf="dataLoaded; else loading">
+  Data is loaded!
+</div>
+
+<ng-template #loading>
+  Loading, please wait...
+</ng-template>
+```
+
+This example will display "Data is loaded!" if dataLoaded is true. Otherwise, it will show "Loading, please wait..." using the loading template
+
+These directives enhance Angular's HTML template capabilities, allowing developers to build more interactive, dynamic, and conditional UI elements directly within their HTML templates, promoting clean and maintainable code
+
+### 5.8. [(ngModel)]
 
 This is a two-way data binding directive from the FormsModule
 
@@ -666,7 +686,7 @@ Example:
 
 This input field is bound to the user.name property. Any changes in the input field will immediately update the user.name property and vice versa
 
-### 5.8. [ngClass] and [ngStyle]
+### 5.9. [ngClass] and [ngStyle]
 
 These directives are used to dynamically set CSS classes and styles
 
@@ -701,7 +721,7 @@ Examples for [ngStyle]:
 
 This div will have its font size and color set based on the size and color properties
 
-### 5.9. *ngTemplateOutlet
+### 5.10. *ngTemplateOutlet
 
 This directive is used to render embedded views loaded from an ng-template
 
@@ -717,7 +737,7 @@ Example:
 
 This example shows how to use a template with a context, passing a dynamic description to the template
 
-### 5.10. *ngLet
+### 5.11. *ngLet
 
 The *ngLet directive allows you to store a value in a variable within the template context
 
@@ -734,7 +754,7 @@ Example:
 
 In this example, complexCalculation() is called only once, and its result is reused in multiple places in the template
 
-### 5.11. [ngValue]
+### 5.12. [ngValue]
 
 This directive is used primarily with <select> elements to bind the value property to non-string data types
 
@@ -750,7 +770,7 @@ Example:
 
 Here, each option in the options array can be a complex object, and selectedOption will be set to the selected object when an option is chosen
 
-### 5.12. [ngPlural]
+### 5.13. [ngPlural]
 
 **ngPlural** is a directive that provides a way to control content based on pluralization rules
 
@@ -768,7 +788,7 @@ Example:
 
 This setup will display different messages based on the number of items in the array.
 
-### 5.13. Custom Directive
+### 5.14. Custom Directive
 
 **Directives** are classes that add additional behavior to elements in your Angular applications
 
