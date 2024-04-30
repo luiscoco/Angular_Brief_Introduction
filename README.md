@@ -1130,7 +1130,111 @@ export class ExampleComponent implements OnInit {
 }
 ```
 
-## 14. Custom Pipes for Data Transformation
+## 14. Pipes in Angular
+
+### 14.1.  Built-in Pipes in Angular
+
+
+Angular provides several built-in pipes that help you transform data right in your templates
+
+Pipes are simple functions you can use in template expressions to accept an input value and return a transformed value
+
+Here's an overview of some of the most commonly used built-in pipes in Angular, complete with examples for each:
+
+#### 14.1.1. DatePipe
+
+Transforms a date value according to locale rules and parameters you provide for formatting
+
+```html
+<p>{{ today | date:'fullDate' }}</p>
+<!-- Output might look like: "Sunday, June 28, 2020" -->
+```
+
+2. UpperCasePipe and LowerCasePipe
+
+Transforms text to all upper or lower case.
+
+```html
+<p>{{ 'Hello World' | uppercase }}</p> <!-- HELLO WORLD -->
+<p>{{ 'Hello World' | lowercase }}</p> <!-- hello world -->
+```
+
+3. CurrencyPipe
+
+Transforms a number to a currency string, formatted according to locale rules.
+
+```html
+<p>{{ 1234.5 | currency:'USD':'symbol':'1.2-2' }}</p>
+<!-- Output might look like: "$1,234.50" -->
+```
+
+4. DecimalPipe
+
+Transforms a number into a decimal number string, formatted according to locale rules.
+
+```html
+<p>{{ 1.3495 | number:'1.1-2' }}</p>
+<!-- Output: "1.35" -->
+```
+
+5. PercentPipe
+
+Transforms a number to a percent string, formatted according to locale rules.
+
+```html
+<p>{{ 0.154 | percent:'1.0-2' }}</p>
+<!-- Output: "15.40%" -->
+```
+
+6. SlicePipe
+
+Creates a new Array or String containing a subset (slice) of the elements
+
+```html
+<p>{{ 'Hello' | slice:1:3 }}</p> <!-- "el" -->
+<p>{{ [1, 2, 3, 4, 5] | slice:1:3 }}</p> <!-- [2,3] -->
+```
+
+7. JsonPipe
+
+Converts a value into its JSON-format string. Useful for debugging.
+
+```html
+<p>{{ {name: 'John'} | json }}</p>
+<!-- Output: '{"name": "John"}' -->
+```
+
+8. AsyncPipe
+
+Automatically subscribes to an Observable or Promise and returns the latest value it has emitted.
+
+```html
+<p>{{ userObservable | async }}</p>
+```
+
+9. KeyValuePipe
+
+Converts an object or Map into an array of key-value pairs so you can iterate over it with *ngFor.
+
+```html
+<div *ngFor="let item of object | keyvalue">
+  {{item.key}}:{{item.value}}
+</div>
+```
+
+10. TitleCasePipe
+
+Transforms the first letter of each word to uppercase; other letters remain unchanged.
+
+```html
+<p>{{ 'hello world' | titlecase }}</p> <!-- "Hello World" -->
+```
+
+These pipes are powerful tools for formatting and displaying data in your Angular applications, allowing you to keep your component code clean and focused on business logic, while the template handles the display logic. Each pipe is designed to be used in template expressions, making them both convenient and efficient for transforming data directly in the UI layer
+
+
+
+### 14.2.  Custom Pipes for Data Transformatio
 
 Angular pipes are used for transforming output in templates
 
