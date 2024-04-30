@@ -10,6 +10,17 @@
 
 3. Angular Components
 
+4. Angular Services
+
+5. Angular Routing
+
+6.  Data Binding
+
+7. Parent to Child Communication
+
+8. Child to Parent Communication
+
+9. Communication Between Unrelated Components
 
 More advance Angular features
 
