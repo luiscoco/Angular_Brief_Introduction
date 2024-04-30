@@ -11,7 +11,7 @@
 3. Angular Components
 
 
-**More advance Angular features**
+More advance Angular features
 
 1. HTTP Service (HttpClient)
 
