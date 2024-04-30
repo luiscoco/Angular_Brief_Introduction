@@ -32,35 +32,8 @@ More advance Angular features
 
 4. RxJS Observables
 
-5. Angular Directives
-
-5.1. ng-content
-
-5.2. ng-template
-
-5.3. ng-container
-
-5.4. *ngIf
-  
-5.5. *ngFor
-
-5.6. *ngSwitch, *ngSwitchCase, and *ngSwitchDefault
-
-5.7. *ngIf; else
-
-5.8. [(ngModel)]
-
-5.9. [ngClass] and [ngStyle]
-
-5.10. *ngTemplateOutlet
-
-5.11. *ngLet
-  
-5.12. [ngValue]
- 
-5.13. [ngPlural]
-
-5.14. Custom Directive
+5. Angular Directives: ng-content, ng-template, ng-container, *ngIf, *ngFor, *ngSwitch, *ngSwitchCase, *ngSwitchDefault,
+   *ngIf; else, [(ngModel)], [ngClass], [ngStyle], *ngTemplateOutlet, *ngLet, [ngValue], [ngPlural], Custom Directive
 
 6. Angular Modules
 
