@@ -610,16 +610,160 @@ In this case, both paragraphs are only rendered if isVisible is true
 
 **ng-container** is especially useful when you want to use structural directives like **ngIf**, **ngFor**, or **ngSwitch** on multiple elements simultaneously without wrapping them in an actual DOM element like a div
 
-### 5. Custom Directive
+### 5.4. *ngIf
+
+*ngIf is a structural directive used to add or remove an element from the DOM based on a given condition. This is useful for conditional display of content
+
+Example:
+
+```html
+<p *ngIf="user.isLoggedIn">Welcome back, {{ user.name }}!</p>
+```
+
+This paragraph will only be rendered if user.isLoggedIn is true
+
+### 5.5. *ngFor
+
+*ngFor is another structural directive used for rendering a list of items. It repeats the host element for each element in an array
+
+Example:
+
+```html
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+```
+
+This code will render an unordered list (```<ul>```), with each item in the items array appearing as a list item (```<li>```)
+
+### 5.6. *ngSwitch, *ngSwitchCase, and *ngSwitchDefault
+
+These directives are used together to display content conditionally, much like switch statements in many programming languages.
+
+Example:
+
+```html
+<div [ngSwitch]="user.role">
+  <p *ngSwitchCase="'admin'">You have admin access.</p>
+  <p *ngSwitchCase="'user'">You are a logged-in user.</p>
+  <p *ngSwitchDefault>No access.</p>
+</div>
+```
+
+Depending on the value of user.role, a different paragraph will be displayed
+
+### 5.7. [(ngModel)]
+
+This is a two-way data binding directive from the FormsModule
+
+It allows you to bind HTML form elements to component data properties
+
+Example:
+
+```html
+<input [(ngModel)]="user.name" type="text">
+```
+
+This input field is bound to the user.name property. Any changes in the input field will immediately update the user.name property and vice versa
+
+### 5.8. [ngClass] and [ngStyle]
+
+These directives are used to dynamically set CSS classes and styles
+
+Example for [ngClass]:
+
+```html
+<div [ngClass]="{'highlight': isHighlighted, 'error': hasError}">Content</div>
+```
+
+This div will have the highlight class if isHighlighted is true and the error class if hasError is true
+
+Example for [ngStyle]:
+
+```html
+<div [ngStyle]="{'font-size': size + 'px', 'color': color}">Styled content</div>
+```
+
+This div will have its font size and color set based on the size and color properties
+
+### 5.9. *ngTemplateOutlet
+
+This directive is used to render embedded views loaded from an ng-template
+
+Example:
+
+```html
+<ng-template #myTemplate let-description="description">
+  <div>{{ description }}</div>
+</ng-template>
+
+<div *ngTemplateOutlet="myTemplate; context: {$implicit: 'This is a dynamic description'}"></div>
+```
+
+This example shows how to use a template with a context, passing a dynamic description to the template
+
+### 5.10. *ngLet
+
+The *ngLet directive allows you to store a value in a variable within the template context
+
+This is especially useful when you want to cache the result of an expression, so you don't need to recalculate it multiple times within the same template
+
+Example:
+
+```html
+<ng-container *ngLet="complexCalculation() as result">
+  <div>{{ result }}</div>
+  <div>The result is {{ result > 0 ? 'positive' : 'negative' }}</div>
+</ng-container>
+```
+
+In this example, complexCalculation() is called only once, and its result is reused in multiple places in the template
+
+### 5.11. [ngValue]
+
+This directive is used primarily with <select> elements to bind the value property to non-string data types
+
+This is useful when you want to bind the selected option to a complex object instead of a string
+
+Example:
+
+```html
+<select [(ngModel)]="selectedOption">
+  <option *ngFor="let option of options" [ngValue]="option">{{ option.label }}</option>
+</select>
+```
+
+Here, each option in the options array can be a complex object, and selectedOption will be set to the selected object when an option is chosen
+
+### 5.12. [ngPlural]
+
+**ngPlural** is a directive that provides a way to control content based on pluralization rules
+
+It’s particularly useful in applications supporting multiple languages and needing to properly handle singular vs. plural forms based on dynamic content
+
+Example:
+
+```html
+<ng-container [ngPlural]="items.length">
+  <ng-template ngPluralCase="=0">No items.</ng-template>
+  <ng-template ngPluralCase="=1">One item.</ng-template>
+  <ng-template ngPluralCase="other">{{ items.length }} items.</ng-template>
+</ng-container>
+```
+
+This setup will display different messages based on the number of items in the array.
+
+### 5.13. Custom Directive
 
 **Directives** are classes that add additional behavior to elements in your Angular applications
 
-Apart from built-in directives like **ngIf** and **ngFor**, you can create **custom directives**\
+Apart from **built-in directives** like: **ng-content**, **ng-template**, **ng-container**, **ngIf**, **ngFor**, you can create **custom directives**
 
 Here’s an example of a custom attribute directive that changes the background color of an element:
 
+**highlight.directive.ts**
+
 ```typescript
-// highlight.directive.ts
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
@@ -638,8 +782,9 @@ export class HighlightDirective implements OnInit {
 
 Usage in a component template:
 
+**app.component.html**
+
 ```html
-<!-- app.component.html -->
 <p [appHighlight]="'lightgreen'">Highlighted text!</p>
 ```
 
