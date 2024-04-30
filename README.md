@@ -57,7 +57,11 @@ More advance Angular features
 
     Custom Pipes for Data Transformation
 
+15. Route Guards
 
+16. Decorators
+
+17. Manage DOM and component interactions in your Angular applications: @ViewChild, @ViewChildren, ViewContainerRef, ElementRef, Renderer2, TemplateRef
 
 ## 0. Introduction
 
