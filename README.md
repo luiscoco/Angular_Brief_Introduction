@@ -792,7 +792,7 @@ This setup will display different messages based on the number of items in the a
 
 **Directives** are classes that add additional behavior to elements in your Angular applications
 
-Apart from **built-in directives** like: **ng-content**, **ng-template**, **ng-container**, **ngIf**, **ngFor**, you can create **custom directives**
+Apart from **built-in directives** like: **ng-content**, **ng-template**, **ng-container**, **ngIf**, **ngFor**, etc, you can create **custom directives**
 
 Here’s an example of a custom attribute directive that changes the background color of an element:
 
@@ -821,6 +821,43 @@ Usage in a component template:
 
 ```html
 <p [appHighlight]="'lightgreen'">Highlighted text!</p>
+```
+
+Custom directives allow you to write your own directive to encapsulate complex behavior in a way that's reusable across multiple components or modules. There are mainly two types:
+
+**Attribute Directives**
+
+Change the appearance or behavior of an element, component, or another directive. For example, you could create a directive that changes the format of text or handles complex mouse events.
+
+**Example: Tooltip Directive**
+
+```typescript
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appTooltip]'
+})
+export class TooltipDirective {
+  @Input('appTooltip') tooltipText: string;
+
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter') onMouseEnter() {
+    // logic to show tooltip
+    this.el.nativeElement.title = this.tooltipText;
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    // logic to hide tooltip
+    this.el.nativeElement.title = '';
+  }
+}
+```
+
+Usage in HTML:
+
+```html
+<button appTooltip="Click to perform an action">Hover over me!</button>
 ```
 
 ## 6. Angular Modules
