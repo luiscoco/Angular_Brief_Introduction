@@ -670,18 +670,33 @@ This input field is bound to the user.name property. Any changes in the input fi
 
 These directives are used to dynamically set CSS classes and styles
 
-Example for [ngClass]:
+Examples for [ngClass]:
 
 ```html
 <div [ngClass]="{'highlight': isHighlighted, 'error': hasError}">Content</div>
 ```
 
+```html
+<div [ngClass]="{
+  'active': isActive,
+  'disabled': isDisabled,
+  'visible': isVisible
+}">Multiple conditional classes</div>
+```
+
 This div will have the highlight class if isHighlighted is true and the error class if hasError is true
 
-Example for [ngStyle]:
+Examples for [ngStyle]:
 
 ```html
 <div [ngStyle]="{'font-size': size + 'px', 'color': color}">Styled content</div>
+```
+
+```html
+<div [ngStyle]="{
+  'background-color': isActive ? 'green' : 'red',
+  'border-style': isVisible ? 'solid' : 'dashed'
+}">Dynamic styles based on conditions</div>
 ```
 
 This div will have its font size and color set based on the size and color properties
