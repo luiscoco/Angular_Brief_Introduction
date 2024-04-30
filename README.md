@@ -40,15 +40,71 @@ More advance Angular features
 
    5.3. ng-container
 
-   5.4. 
+  5.4. *ngIf
+  
+  5.5. *ngFor
 
-   5.5.
+  5.6. *ngSwitch, *ngSwitchCase, and *ngSwitchDefault
 
-   5.6.
+  5.7. *ngIf; else
 
-   5.7.
+  5.8. [(ngModel)]
 
-   5.8.
+  5.9. [ngClass] and [ngStyle]
+
+  5.10. *ngTemplateOutlet
+
+  5.11. *ngLet
+  
+  5.12. [ngValue]
+ 
+  5.13. [ngPlural]
+
+  5.14. Custom Directive
+
+6. Angular Modules
+
+7. Lazy Loading
+
+8. Change Detection Strategies
+
+9. HTTP Interceptors
+
+10. State Management with NgRx
+
+11. Dynamic Component Loading
+
+12. Content Projection
+
+13. Using Observables and Promises in Angular
+
+14. Pipes in Angular
+
+   14.1. Built-in Pipes in Angular
+
+     14.1.1. DatePipe
+
+     14.1.2. UpperCasePipe and LowerCasePipe
+
+     14.1.3. CurrencyPipe
+
+     14.1.4. DecimalPipe
+
+     14.1.5. PercentPipe
+
+     14.1.6. SlicePipe
+
+     14.1.7. JsonPipe
+
+     14.1.8. AsyncPipe
+
+     14.1.9. KeyValuePipe
+
+     14.1.10. TitleCasePipe
+
+   14.2. Custom Pipes for Data Transformation
+
+
 
 ## 0. Introduction
 
