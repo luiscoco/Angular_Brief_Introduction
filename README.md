@@ -538,6 +538,37 @@ export class AppComponent implements OnDestroy {
 
 ## 5. Angular Directives
 
+### 5.1. ng-content 
+
+**ng-content** directive is used for content projection
+
+This allows you to create components that can accept dynamic HTML content from the parent component
+
+It's like creating a placeholder in a component template that can be filled with custom content defined outside of the component.
+
+Example:
+
+**ParentComponent.html**
+
+```html
+<app-child>
+  <p>This content is projected from the ParentComponent into the ChildComponent.</p>
+</app-child>
+```
+
+**ChildComponent.html**
+
+```html
+<div>
+  Here is some content inside the ChildComponent.
+  <ng-content></ng-content> <!-- Place where projected content will appear -->
+</div>
+```
+
+Here, the ```<p>`` tag in the ParentComponent's template will appear inside the ng-content tag in the ChildComponent.
+
+### 5. Custom Directive
+
 **Directives** are classes that add additional behavior to elements in your Angular applications
 
 Apart from built-in directives like **ngIf** and **ngFor**, you can create **custom directives**\
