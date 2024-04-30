@@ -1348,6 +1348,14 @@ class MyClass {
 
 ## 17. Manage DOM and component interactions in your Angular applications
 
+**Summary**
+
+**@ViewChild**: Access a single child component, directive, or DOM element
+
+**@ViewChildren**: Access multiple child components, directives, or DOM elements
+
+**ViewContainerRef**: Manage and manipulate views dynamically, including adding or removing components at runtime
+
 ### 17.1. @ViewChild
 
 The **@ViewChild** decorator is used to access a single child component, directive, or DOM element from the template
@@ -1448,6 +1456,40 @@ The example logs the message of each child component to the console, demonstrati
 This setup is particularly useful when you need to interact with multiple instances of components dynamically added to the template or when components are repeated using structural directives like *ngFor.
 
 
-### 17.3.
+### 17.3. ViewContainerRef
+
+**ViewContainerRef** represents a **container** where one or more **views can be attached**
+
+It is not a decorator but a service that allows you **to manipulate views dynamically**
+
+You can use it **to create components dynamically during runtime**, add or remove components or other view elements programmatically, and manage the lifecycle of these dynamically added component
+
+Example:
+
+```typescript
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { ChildComponent } from './child.component';
+
+@Component({
+  selector: 'app-parent',
+  template: '<ng-template #container></ng-template>'
+})
+export class ParentComponent {
+  @ViewChild('container', { read: ViewContainerRef }) container!: ViewContainerRef;
+
+  constructor(private resolver: ComponentFactoryResolver) {}
+
+  createChildComponent() {
+    const childComponentFactory = this.resolver.resolveComponentFactory(ChildComponent);
+    const componentRef = this.container.createComponent(childComponentFactory);
+    componentRef.instance.message = 'Dynamically created child component';
+  }
+}
+```
+
+In this example, ViewContainerRef is used to **dynamically create instances of ChildComponent** inside the parent component template
+
+This allows for more dynamic and flexible component interactions than what is possible with static template-based approaches
+
 
 ### 17.4.
