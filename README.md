@@ -756,7 +756,7 @@ In this example, complexCalculation() is called only once, and its result is reu
 
 ### 5.12. [ngValue]
 
-This directive is used primarily with <select> elements to bind the value property to non-string data types
+This directive is used primarily with ```<select>``` elements to bind the value property to non-string data types
 
 This is useful when you want to bind the selected option to a complex object instead of a string
 
@@ -827,7 +827,9 @@ Custom directives allow you to write your own directive to encapsulate complex b
 
 **Attribute Directives**
 
-Change the appearance or behavior of an element, component, or another directive. For example, you could create a directive that changes the format of text or handles complex mouse events.
+Change the appearance or behavior of an element, component, or another directive
+
+For example, you could create a directive that changes the format of text or handles complex mouse events
 
 **Example: Tooltip Directive**
 
@@ -932,7 +934,9 @@ export class UserComponent {
 
 This component will now only check for and react to changes when its input properties change, rather than checking during every change detection cycle
 
-Let's explore additional advanced Angular features such as Interceptors, State Management with NgRx, Dynamic Components, and Content Projection. These features enable sophisticated handling of various application needs such as state control, dynamic behavior, and efficient data handling.
+Let's explore additional advanced Angular features such as Interceptors, State Management with NgRx, Dynamic Components, and Content Projection
+
+These features enable sophisticated handling of various application needs such as state control, dynamic behavior, and efficient data handling
 
 ## 9.  HTTP Interceptors
 
