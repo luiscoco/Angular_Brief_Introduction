@@ -1,10 +1,25 @@
 # Angular: brief introduction
 
-Angular is a popular framework developed by Google for building dynamic web applications
+**Summary**:
 
-It is based on TypeScript and provides a robust set of tools and components to manage the complexity of modern app development
+1. Setting Up Angular in Visual Studio Code (VSCode)
 
-## Setting Up Angular in Visual Studio Code (VSCode)
+2. Sample Angular Project Structure
+
+3. Angular Components
+
+
+
+**More advance Angular features**
+
+1. HTTP Service (HttpClient)
+
+
+Angular is a popular framework developed by **Google** for building **dynamic web applications**
+
+It is based on **TypeScript** and provides a robust set of tools and components to manage the complexity of modern app development
+
+## 1. Setting Up Angular in Visual Studio Code (VSCode)
 
 To work with Angular in VSCode effectively, you'll want to set up your development environment properly
 
@@ -42,7 +57,7 @@ Useful Extensions for Angular Development in VSCode
 
 **ESLint**: Integrates ESLint JavaScript into VSCode for better code quality and style
 
-## Sample Angular Project Structure
+## 2. Sample Angular Project Structure
 
 Here’s an example of a basic Angular project structure created by Angular CLI:
 
@@ -89,7 +104,7 @@ This setup provides a strong foundation for developing complex applications with
 
 By utilizing these tools and extensions, you can significantly enhance your productivity and code quality
 
-## 1. Angular Components
+## 3. Angular Components
 
 Components are the building blocks of Angular applications. They control a patch of screen called a view. Here’s an example of a simple Angular component:
 
@@ -132,7 +147,7 @@ This command will create a new directory under the **src/app** folder with the c
 
 Make sure you have Angular CLI installed globally (**npm install -g @angular/cli**) and that your terminal is opened in the root directory of your Angular project where the angular.json file is located
 
-## 2. Angular Services
+## 4. Angular Services
 
 Services in Angular are reusable data providers that can be injected into components. Here's an example of a simple logging service:
 
@@ -170,7 +185,7 @@ export class AppComponent {
 }
 ```
 
-## 3. Angular Routing
+## 5. Angular Routing
 
 Routing in Angular allows you to navigate between different components. Here's a basic setup for routing:
 
@@ -215,7 +230,7 @@ import { Component } from '@angular/core';
 export class AboutComponent {}
 ```
 
-## 4. Data Binding
+## 6. Data Binding
 
 Angular supports different types of data binding, such as **property binding**, **event binding**, and **two-way binding**:
 
@@ -246,7 +261,7 @@ export class AppComponent {
 
 In Angular, components can communicate using a variety of methods depending on the relationship between the components (parent to child, child to parent, or unrelated components). Below are examples for each scenario, illustrating effective communication patterns using @Input(), @Output(), services, and Angular’s event-driven architecture.
 
-## 5. Parent to Child Communication
+## 7. Parent to Child Communication
 
 Parent components can pass data to child components using @Input() decorators
 
@@ -278,7 +293,7 @@ export class ParentComponent {
 }
 ```
 
-## 6. Child to Parent Communication
+## 8. Child to Parent Communication
 
 Child components can send data back to the parent using the @Output() decorator and EventEmitter. Here’s how:
 
@@ -319,7 +334,7 @@ export class ParentComponent {
 }
 ```
 
-## 7. Communication Between Unrelated Components
+## 9. Communication Between Unrelated Components
 
 For components that are not in a direct parent-child relationship, you can use a shared service with observables to facilitate communication:
 
