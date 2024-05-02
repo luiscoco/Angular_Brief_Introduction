@@ -1675,4 +1675,40 @@ export class MyComponent {
 
 This setup is useful for **dynamically adding and manipulating content** in your application
 
+## 18. Difference between subject and behaviour subject
+
+In **RxJS**, a popular library for reactive programming in JavaScript, there are two types of subjects: **Subject** and **BehaviorSubject**
+
+Both are implementations of the `Subject` class but have some key differences in behavior
+
+**Subject**: A `Subject` is a multicast observable that can be subscribed to by multiple observers
+
+It acts as both an observable and an observer, meaning you can subscribe to it to receive values and also push values to it using its `next()` method. When a `Subject` emits a new value, all of its subscribed observers will receive that value.
+
+**BehaviorSubject**: A `BehaviorSubject` is a type of `Subject` that has a notion of “current value”. It maintains and emits the latest value to any new subscribers
+
+When a `BehaviorSubject` is created, it requires an initial value
+
+Any subscriber that subscribes to a `BehaviorSubject` will immediately receive the current value or the latest emitted value
+
+```javascript
+import { Subject, BehaviorSubject } from 'rxjs';
+
+const subject = new Subject();
+const behaviorSubject = new BehaviorSubject('Initial Value');
+
+// Subscribe to Subject
+subject.subscribe(value => console.log('Subject:', value));
+
+// Subscribe to BehaviorSubject
+behaviorSubject.subscribe(value => console.log('BehaviorSubject:', value));
+
+// Emit values
+subject.next('Value 1');
+behaviorSubject.next('Value 2');
+
+// Subscribe after value emission
+subject.subscribe(value => console.log('Late Subscription to Subject:', value));
+behaviorSubject.subscribe(value => console.log('Late Subscription to BehaviorSubject:', value));
+```
 
