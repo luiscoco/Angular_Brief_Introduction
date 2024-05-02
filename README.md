@@ -2,6 +2,8 @@
 
 https://www.youtube.com/@AngularUniversity/playlists
 
+![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/104aca52-e121-47c6-8ef5-c7531c849e0a)
+
 **Summary**:
 
 0. Introduction
