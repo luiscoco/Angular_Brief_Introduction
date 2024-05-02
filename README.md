@@ -1,5 +1,7 @@
 # Angular: brief introduction
 
+https://www.youtube.com/@AngularUniversity/playlists
+
 **Summary**:
 
 0. Introduction
