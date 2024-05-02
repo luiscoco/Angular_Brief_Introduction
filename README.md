@@ -1,5 +1,7 @@
 # Angular: brief introduction
 
+https://frontendinterviewquestions.medium.com/top-90-angular-interview-questions-and-answers-55468da98392
+
 https://www.youtube.com/@AngularUniversity/playlists
 
 ![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/104aca52-e121-47c6-8ef5-c7531c849e0a)
@@ -242,6 +244,8 @@ export class AppComponent {
 ```
 
 ## 5. Angular Routing
+
+https://frontendinterviewquestions.medium.com/routing-in-angular-20b81acc12d0
 
 Routing in Angular allows you to navigate between different components. Here's a basic setup for routing:
 
