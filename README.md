@@ -1120,32 +1120,7 @@ yarn add @ngrx/store
 
 Here is a simple example of setting up **NgRx** for managing the state of user data:
 
-**actions/user.actions.ts**
 
-```typescript
-import { createAction, props } from '@ngrx/store';
-import { User } from '../models/user.model';
-
-export const addUser = createAction(
-  '[User List] Add User',
-  props<{ user: User }>()
-);
-```
-
-**reducers/user.reducer.ts**
-
-```typescript
-import { createReducer, on } from '@ngrx/store';
-import { addUser } from '../actions/user.actions';
-import { User } from '../models/user.model';
-
-export const initialState: ReadonlyArray<User> = [];
-
-export const userReducer = createReducer(
-  initialState,
-  on(addUser, (state, { user }) => [...state, user])
-);
-```
 
 ## 11. Dynamic Component Loading
 
