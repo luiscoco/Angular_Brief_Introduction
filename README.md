@@ -162,6 +162,8 @@ By utilizing these tools and extensions, you can significantly enhance your prod
 
 ## 3. Angular Components
 
+https://medium.com/@rtorrico_dev/angular-17-standalone-components-a115800c2a78
+
 Components are the building blocks of Angular applications. They control a patch of screen called a view. Here’s an example of a simple Angular component:
 
 ```typescript
