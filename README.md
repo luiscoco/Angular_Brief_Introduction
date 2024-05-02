@@ -1069,10 +1069,13 @@ export class AppModule {}
 
 **NgRx** is a framework for building reactive applications in Angular using the Redux pattern
 
-Here is a simple example of setting up NgRx for managing the state of user data:
+![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/9c3b1bf6-86f8-4378-83fa-806b97269ac0)
+
+Here is a simple example of setting up **NgRx** for managing the state of user data:
+
+**actions/user.actions.ts**
 
 ```typescript
-// actions/user.actions.ts
 import { createAction, props } from '@ngrx/store';
 import { User } from '../models/user.model';
 
@@ -1082,8 +1085,9 @@ export const addUser = createAction(
 );
 ```
 
+**reducers/user.reducer.ts**
+
 ```typescript
-// reducers/user.reducer.ts
 import { createReducer, on } from '@ngrx/store';
 import { addUser } from '../actions/user.actions';
 import { User } from '../models/user.model';
