@@ -1074,6 +1074,47 @@ You can install the **Store** to your project with the following ng add command
 ```
 ng add @ngrx/store@latest
 ```
+This command will automate the following steps:
+
+- Update **package.json** dependencies with **@ngrx/store**
+
+- Run **npm install** to install those dependencies
+
+- Update your **src/app/app.module.ts** imports array with **StoreModule.forRoot({})**
+
+- If the project is using a standalone bootstrap, it adds **provideStore()** into the application config
+
+```
+ng add @ngrx/store@latest --no-minimal
+```
+
+This command will automate the following steps:
+
+- Update **package.json** dependencies with **@ngrx/store**
+
+- Run **npm install** to install those dependencies
+
+- Create a **src/app/reducers** folder, unless the statePath flag is provided, in which case this would be created based on the flag
+
+- Create a **src/app/reducers/index.ts** file with an empty State interface, an empty reducers map, and an empty metaReducers array
+
+- This may be created under a different directory if the statePath flag is provided
+
+- Update your **src/app/app.module.ts** imports array with **StoreModule.forRoot(reducers, { metaReducers })**
+
+- If you provided flags then the command will attempt to locate and update module found by the flags
+
+**Installing with npm**: For more information on using npm check out the docs here
+
+```
+npm install @ngrx/store --save
+```
+
+**Installing with yarn**: For more information on using yarn check out the docs here
+
+```
+yarn add @ngrx/store
+```
 
 ![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/9c3b1bf6-86f8-4378-83fa-806b97269ac0)
 
