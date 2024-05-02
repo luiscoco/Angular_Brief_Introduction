@@ -1069,6 +1069,12 @@ export class AppModule {}
 
 **NgRx** is a framework for building reactive applications in Angular using the Redux pattern
 
+You can install the **Store** to your project with the following ng add command
+
+```
+ng add @ngrx/store@latest
+```
+
 ![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/9c3b1bf6-86f8-4378-83fa-806b97269ac0)
 
 Here is a simple example of setting up **NgRx** for managing the state of user data:
