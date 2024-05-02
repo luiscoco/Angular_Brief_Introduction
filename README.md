@@ -249,6 +249,8 @@ export class AppComponent {
 
 https://frontendinterviewquestions.medium.com/routing-in-angular-20b81acc12d0
 
+https://medium.com/javascript-in-plain-english/mastering-angular-routing-1e8ae8c45aaf
+
 Routing in Angular allows you to navigate between different components. Here's a basic setup for routing:
 
 ```typescript
