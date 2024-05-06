@@ -569,7 +569,11 @@ export class UserService {
 
 ## 4. RxJS Observables
 
-RxJS Observables are a powerful feature used extensively in Angular for managing asynchronous operations. Here’s how you might use observables in a service with a component:
+RxJS Observables are a powerful feature used extensively in Angular for managing asynchronous operations
+
+![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/bf834c35-eeaa-452a-a5eb-ef926213f962)
+
+Here’s how you might use observables in a service with a component:
 
 ```typescript
 // timer.service.ts
