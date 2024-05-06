@@ -571,9 +571,88 @@ export class UserService {
 
 RxJS Observables are a powerful feature used extensively in Angular for managing asynchronous operations
 
-![image](https://github.com/luiscoco/Angular_Brief_Introduction/assets/32194879/bf834c35-eeaa-452a-a5eb-ef926213f962)
+### 4.1. Observable
 
-Here’s how you might use observables in a service with a component:
+An Observable is a data source that **emits values over time**
+
+It's a key component in RxJS and can **emit multiple values**
+
+Observables are **lazy**, meaning they **won’t start emitting data until a subscriber begins listening**
+
+You can think of an **observable** as a **stream of events to which you can subscribe**
+
+### 4.2. Observer
+
+An Observer is a set of callbacks that knows how to listen to values delivered by the Observable
+
+An observer has three methods:
+
+**next**: handles receiving a value from the Observable
+
+**error**: handles receiving an error from the Observable
+
+**complete**: handles the completion signal from the Observable, indicating that no more values will be emitted
+
+### 4.3. Subscription
+
+When an **observer subscribes to an Observable**, the **Observable begins emitting values**, and these values are handled by the Observer’s callbacks
+
+The result is a Subscription. Subscriptions can be thought of as the ongoing execution of an Observable, and they have a method to **cancel the execution**, known as **unsubscribe**
+
+Example in Angular
+
+Here's an example of how **RxJS** might be used within an Angular component to **handle HTTP requests**, which are **asynchronous**:
+
+```typescript
+import { Component, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-user',
+  template: `<div *ngFor="let user of users">
+               <p>{{ user.name }}</p>
+             </div>`
+})
+export class UserComponent implements OnDestroy {
+  users: any[] = [];
+  private subscription: Subscription;
+
+  constructor(private http: HttpClient) {
+    const usersObservable: Observable<any> = this.http.get('https://jsonplaceholder.typicode.com/users');
+    
+    this.subscription = usersObservable.subscribe({
+      next: (data) => {
+        this.users = data;
+      },
+      error: (error) => {
+        console.error('Something went wrong!', error);
+      },
+      complete: () => {
+        console.log('Completed!');
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe(); // Clean up the subscription to prevent memory leaks
+  }
+}
+```
+
+Explanation:
+
+The **HttpClient.get** method **returns** an **Observable** that emits the data fetched from the API
+
+In the constructor, we subscribe to this Observable
+
+The Observer provided to subscribe defines what to do with the fetched data (**next**), how to handle any errors (**error**), and what to do when the Observable completes (**complete**)
+
+To prevent memory leaks, the subscription is **unsubscribed** when the component is destroyed (**ngOnDestroy** lifecycle hook)
+
+This pattern is fundamental in Angular applications, especially for managing asynchronous data flows effectively
+
+**How to use observables in a service with a component**
 
 ```typescript
 // timer.service.ts
